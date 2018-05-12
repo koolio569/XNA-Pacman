@@ -330,7 +330,6 @@
 
                 textures.Draw(tileMapTexture, destinationRectangle, sourceRectangle, Color.White)
 
-                'Draw item - select case
                 Select Case _maze(x, y).GetItem
 
                     Case ItemEnum.coin

@@ -48,6 +48,8 @@ Public Class Game1
 
         _graphics.PreferredBackBufferHeight = 768
 
+        _graphics.IsFullScreen = True
+
         _graphics.ApplyChanges()
 
     End Sub
