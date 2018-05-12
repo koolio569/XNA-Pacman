@@ -38,6 +38,10 @@
 
         Next
 
+        _maze(0, 0).SetVisited(True)
+
+        Algorithim(_maze(0, 0))
+
     End Sub
 
     Sub Algorithim(ByRef current As CCell)
