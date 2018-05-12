@@ -34,7 +34,6 @@
 
     End Sub
 
-
     Private Sub GenerateMaze()
 
         _stackOfCells = New Stack(Of CCell)
@@ -179,9 +178,69 @@
 
     Private Sub GenerateGraph()
 
+        Dim listOfNodes As New List(Of CNode)
 
+        Dim identifer As Integer = 0
+
+        Dim position As Vector2
+
+        Dim listOfNeighbours As List(Of Integer)
+
+        For y = 0 To _numberOfRows - 1
+
+            For x = 0 To _numberOfColumns - 1
+
+                identifer = ((y * _numberOfRows) + x)
+
+                position = New Vector2(x, y)
+
+                listOfNeighbours = GetListOfNodeNeighbours(x, y)
+
+                listOfNodes.Add(New CNode(identifer, position, listOfNeighbours))
+
+            Next
+
+        Next
+
+        _graph = New CGraph("Map:1", listOfNodes)
 
     End Sub
+
+    Private Function GetListOfNodeNeighbours(ByVal xPosition As Integer, ByVal yPosition As Integer) As List(Of Integer)
+
+        Dim listOfIdentifier As New List(Of Integer)
+
+        'North
+        If _maze(xPosition, yPosition).GetWalls(0) = False Then
+
+            listOfIdentifier.Add((((yPosition - 1) * _numberOfRows) + xPosition))
+
+        End If
+
+        'East
+        If _maze(xPosition, yPosition).GetWalls(1) = False Then
+
+            listOfIdentifier.Add(((yPosition * _numberOfRows) + (xPosition + 1)))
+
+        End If
+
+        'South
+        If _maze(xPosition, yPosition).GetWalls(2) = False Then
+
+            listOfIdentifier.Add((((yPosition + 1) * _numberOfRows) + xPosition))
+
+        End If
+
+        'West
+        If _maze(xPosition, yPosition).GetWalls(3) = False Then
+
+            listOfIdentifier.Add((((yPosition - 1) * _numberOfRows) + (xPosition - 1)))
+
+        End If
+
+        Return listOfIdentifier
+
+    End Function
 
     Sub Update()
 
