@@ -20,8 +20,6 @@ Public Class Game1
 
     Public Shared _currentMap As CMap
 
-    'When pressing 1 at highscore game closes, keyboard state still detects one when at main menu then exits ?
-
     Public Enum GameStateEnum
 
         Exiting = 0
@@ -48,7 +46,7 @@ Public Class Game1
 
         _graphics.PreferredBackBufferWidth = 1280
 
-        _graphics.PreferredBackBufferHeight = 720
+        _graphics.PreferredBackBufferHeight = 768
 
         _graphics.ApplyChanges()
 
@@ -134,7 +132,7 @@ Public Class Game1
 
     Private Sub StartNewGame()
 
-        _currentMap = New CMap(8, 8)
+        _currentMap = New CMap(12, 12)
 
         _player = New CPlayer
 

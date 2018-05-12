@@ -95,3 +95,5 @@ F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.vbproj.CopyComplete
 F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.exe
 F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.xml
 F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.pdb
+F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\MapTextureInfo.txt
+F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\MapTiles.png

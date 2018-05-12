@@ -70,7 +70,7 @@
 
         sourceRectangle = New Rectangle(CInt(_textureInfo.GetPosition.X), CInt(_textureInfo.GetPosition.Y), CInt(_textureInfo.GetSize.X), CInt(_textureInfo.GetSize.Y))
 
-        destinationrectangle = New Rectangle(CInt(_textureInfo.GetPosition.X), CInt(_textureInfo.GetPosition.Y), CInt(_textureInfo.GetSize.X), CInt(_textureInfo.GetSize.Y))
+        destinationrectangle = New Rectangle(CInt(_textureInfo.GetPosition.X), CInt(_textureInfo.GetPosition.Y), CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth), CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferHeight))
 
         textures.Begin()
 

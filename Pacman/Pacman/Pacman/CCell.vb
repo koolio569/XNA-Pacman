@@ -24,6 +24,8 @@
 
         _visited = False
 
+        _item = ""
+
     End Sub
 
     Function GetPositionX() As Integer
@@ -81,6 +83,38 @@
     Sub SetItem(ByVal newItem As String)
 
         _item = newItem
+
+    End Sub
+
+    Sub SetSymbol()
+
+        Dim total As Byte = 0
+
+        If _walls(0) = True Then
+
+            total = CByte(total + 1)
+
+        End If
+
+        If _walls(1) = True Then
+
+            total = CByte(total + 2)
+
+        End If
+
+        If _walls(2) = True Then
+
+            total = CByte(total + 4)
+
+        End If
+
+        If _walls(3) = True Then
+
+            total = CByte(total + 8)
+
+        End If
+
+        _symbol = total
 
     End Sub
 

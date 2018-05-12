@@ -60,9 +60,16 @@
       <Name>MainMenuTextureInfo</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Compile Include="MapTextureInfo.txt">
+    <Content Include="MapTextureInfo.txt">
       <Name>MapTextureInfo</Name>
-    </Compile>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MapTiles.png">
+      <Name>MapTiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="pacman.png">
       <Name>pacman</Name>
       <Importer>TextureImporter</Importer>

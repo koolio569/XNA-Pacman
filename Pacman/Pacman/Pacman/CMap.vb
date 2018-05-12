@@ -20,7 +20,7 @@
 
         ReDim MyClass._maze(_numberOfColumns, _numberOfRows)
 
-        LoadTextureInfo("MapTextureInfo.txt")
+        LoadTextureInfo("Content/MapTextureInfo.txt")
 
         GenerateMaze()
 
@@ -51,6 +51,16 @@
         _maze(0, 0).SetVisited(True)
 
         Algorithim(_maze(0, 0))
+
+        For y = 0 To CByte(_numberOfRows - 1)
+
+            For x = 0 To CByte(_numberOfColumns - 1)
+
+                _maze(x, y).setSymbol()
+
+            Next
+
+        Next
 
     End Sub
 
@@ -250,11 +260,37 @@
 
     Sub Draw(ByVal textures As SpriteBatch)
 
+        Const tileMapTextureColumns As Integer = 8
+
+        Const tileMapTextureSize As Integer = 64
+
+        Dim tileMapTexture As Texture2D = Game1._contentLoader.Load(Of Texture2D)(_textureInfo.GetFileLocation)
+
         Dim sourceRectangle, destinationRectangle As Rectangle
+
+        Dim a, b As Integer
 
         textures.Begin()
 
+        For y = 0 To _numberOfColumns - 1
 
+            For x = 0 To _numberOfRows - 1
+
+                'Texture X position
+                a = (_maze(x, y).GetSymbol Mod tileMapTextureColumns) * tileMapTextureSize
+
+                'Texture Y position
+                b = CInt(Math.Floor(_maze(x, y).GetSymbol / tileMapTextureColumns)) * tileMapTextureSize
+
+                sourceRectangle = New Rectangle(a, b, tileMapTextureSize, tileMapTextureSize)
+
+                destinationRectangle = New Rectangle((x * tileMapTextureSize), (y * tileMapTextureSize), tileMapTextureSize, tileMapTextureSize)
+
+                textures.Draw(tileMapTexture, destinationRectangle, sourceRectangle, Color.White)
+
+            Next
+
+        Next
 
         textures.End()
 
