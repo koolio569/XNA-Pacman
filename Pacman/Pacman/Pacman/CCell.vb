@@ -10,8 +10,6 @@
 
     Private _item As String
 
-    Private _textureInfo As CTextureInfo
-
     Sub New(ByVal newPosition As Vector2)
 
         _position = newPosition
@@ -93,12 +91,6 @@
             _walls(w) = False
 
         Next
-
-    End Sub
-
-    Sub LoadTextureInfo(ByVal filePath As String)
-
-        _textureInfo = New CTextureInfo(Game1.LoadTextureInfo(filePath))
 
     End Sub
 

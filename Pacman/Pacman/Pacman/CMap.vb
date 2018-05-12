@@ -10,6 +10,8 @@
 
     Private _stackOfCells As Stack(Of CCell)
 
+    Private _textureInfo As CTextureInfo
+
     Sub New(ByVal newNumberOfRows As Integer, ByVal newNumberOfColumns As Integer)
 
         _numberOfRows = newNumberOfRows
@@ -18,11 +20,20 @@
 
         ReDim MyClass._maze(_numberOfColumns, _numberOfRows)
 
+        LoadTextureInfo("MapTextureInfo.txt")
+
         GenerateMaze()
 
         GenerateGraph()
 
     End Sub
+
+    Sub LoadTextureInfo(ByVal filePath As String)
+
+        _textureInfo = New CTextureInfo(Game1.LoadTextureInfo(filePath))
+
+    End Sub
+
 
     Private Sub GenerateMaze()
 
