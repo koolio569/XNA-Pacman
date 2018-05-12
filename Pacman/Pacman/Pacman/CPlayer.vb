@@ -20,7 +20,7 @@
 
         _drawPosition = New Vector2(0, 0)
 
-        '_textureInfo = New CTextureInfo(Game1.LoadTextureInfo("pacmanTexture.txt"))
+        _textureInfo = New CTextureInfo(Game1.LoadTextureInfo("Content/pacmanTextureInfo.txt"))
 
     End Sub
 
@@ -68,13 +68,43 @@
 
     Sub Update()
 
+        Game1._kbState = Keyboard.GetState
 
+        If Game1._kbState.IsKeyDown(Keys.W) Then
+
+            _drawPosition.Y -= 3
+
+        ElseIf Game1._kbState.IsKeyDown(Keys.A) Then
+
+            _drawPosition.X -= 3
+
+        ElseIf Game1._kbState.IsKeyDown(Keys.S) Then
+
+            _drawPosition.Y += 3
+
+        ElseIf Game1._kbState.IsKeyDown(Keys.D) Then
+
+            _drawPosition.X += 3
+
+        End If
 
     End Sub
 
-    Sub Draw()
+    Sub Draw(ByRef textures As SpriteBatch)
 
+        Dim sourceRectangle, destinationRectangle As Rectangle
 
+        Dim pacmanTexture As Texture2D = Game1._contentLoader.Load(Of Texture2D)(_textureInfo.GetFileLocation)
+
+        sourceRectangle = New Rectangle(CInt(_textureInfo.GetPosition.X), CInt(_textureInfo.GetPosition.Y), CInt(_textureInfo.GetSize.X), CInt(_textureInfo.GetSize.Y))
+
+        destinationRectangle = New Rectangle(CInt(_drawPosition.X), CInt(_drawPosition.Y), CInt(_textureInfo.GetSize.X), CInt(_textureInfo.GetSize.Y))
+
+        textures.Begin()
+
+        textures.Draw(pacmanTexture, destinationRectangle, sourceRectangle, Color.White)
+
+        textures.End()
 
     End Sub
 

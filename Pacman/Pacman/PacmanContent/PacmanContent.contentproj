@@ -76,6 +76,16 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="PacmanTexture.png">
+      <Name>PacmanTexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pacmanTextureInfo.txt">
+      <Name>pacmanTextureInfo</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Pause.png">
       <Name>Pause</Name>
       <Importer>TextureImporter</Importer>

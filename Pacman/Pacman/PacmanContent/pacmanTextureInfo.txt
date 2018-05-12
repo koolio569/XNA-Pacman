@@ -1,0 +1,5 @@
+PacmanTexture
+64
+64
+0
+0

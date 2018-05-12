@@ -300,7 +300,7 @@
 
     End Sub
 
-    Sub Draw(ByVal textures As SpriteBatch)
+    Sub Draw(ByRef textures As SpriteBatch)
 
         Const tileMapTextureColumns As Integer = 8
 

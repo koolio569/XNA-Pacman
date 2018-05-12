@@ -208,6 +208,8 @@ Public Class Game1
 
             Case GameStateEnum.Playing
 
+                Me.TargetElapsedTime = TimeSpan.FromSeconds(1.0F / 60.0F)
+
                 _player.Update()
 
                 _currentMap.Update()
@@ -256,7 +258,7 @@ Public Class Game1
 
                 _currentMap.Draw(_spriteBatch)
 
-                _player.Draw()
+                _player.Draw(_spriteBatch)
 
             Case GameStateEnum.NewGame
 
@@ -266,7 +268,7 @@ Public Class Game1
 
                 _currentMap.Draw(_spriteBatch)
 
-                _player.Draw()
+                _player.Draw(_spriteBatch)
 
                 _currentMenu.Draw(_spriteBatch)
 
