@@ -60,7 +60,7 @@
 
     Sub Draw(ByRef textures As SpriteBatch)
 
-        Dim sourceRectangle, destinationrectangle As Rectangle
+        Dim sourceRectangle, destinationRectangle As Rectangle
 
         Dim textHeight As Integer = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferHeight * 0.5) - CInt((_optionsText.Count / 2) * Game1._font.MeasureString("I").Y)
 
@@ -70,11 +70,11 @@
 
         sourceRectangle = New Rectangle(CInt(_textureInfo.GetPosition.X), CInt(_textureInfo.GetPosition.Y), CInt(_textureInfo.GetSize.X), CInt(_textureInfo.GetSize.Y))
 
-        destinationrectangle = New Rectangle(CInt(_textureInfo.GetPosition.X), CInt(_textureInfo.GetPosition.Y), CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth), CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferHeight))
+        destinationRectangle = New Rectangle(CInt(_textureInfo.GetPosition.X), CInt(_textureInfo.GetPosition.Y), CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth), CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferHeight))
 
         textures.Begin()
 
-        textures.Draw(menuTexture, destinationrectangle, sourceRectangle, Color.White)
+        textures.Draw(menuTexture, destinationRectangle, sourceRectangle, Color.White)
 
         For i = 0 To _optionsText.Count - 1
 
