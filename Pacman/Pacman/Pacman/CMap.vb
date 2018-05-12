@@ -12,6 +12,16 @@
 
     Private _textureInfo As CTextureInfo
 
+    Enum ItemEnum
+
+        coin = 10
+
+        megacoin = 50
+
+        cherry = 100
+
+    End Enum
+
     Sub New(ByVal newNumberOfRows As Integer, ByVal newNumberOfColumns As Integer)
 
         _numberOfRows = newNumberOfRows
@@ -56,9 +66,29 @@
 
             For x = 0 To CByte(_numberOfColumns - 1)
 
-                _maze(x, y).setSymbol()
+                _maze(x, y).SetSymbol()
+
+                _maze(x, y).SetItem(ItemEnum.coin)
 
             Next
+
+        Next
+
+        Dim randX, randY As Integer
+
+        For i = 0 To 3
+
+            Do
+
+                Randomize()
+
+                randX = CInt(Math.Floor(Rnd() * _numberOfColumns))
+
+                randY = CInt(Math.Floor(Rnd() * _numberOfRows))
+
+            Loop Until _maze(randX, randY).GetItem <> ItemEnum.megacoin
+
+            _maze(randX, randY).SetItem(ItemEnum.megacoin)
 
         Next
 
@@ -254,7 +284,13 @@
 
     Sub Update()
 
+        Game1._kbState = Keyboard.GetState
 
+        If Game1._kbState.IsKeyDown(Keys.D1) Then
+
+            Game1._gameState = Game1.GameStateEnum.Paused
+
+        End If
 
     End Sub
 
@@ -287,6 +323,23 @@
                 destinationRectangle = New Rectangle((x * tileMapTextureSize), (y * tileMapTextureSize), tileMapTextureSize, tileMapTextureSize)
 
                 textures.Draw(tileMapTexture, destinationRectangle, sourceRectangle, Color.White)
+
+                'Draw item - select case
+                Select Case _maze(x, y).GetItem
+
+                    Case ItemEnum.coin
+
+                        sourceRectangle = New Rectangle(0, 128, tileMapTextureSize, tileMapTextureSize)
+
+                        textures.Draw(tileMapTexture, destinationRectangle, sourceRectangle, Color.White)
+
+                    Case ItemEnum.megacoin
+
+                        sourceRectangle = New Rectangle(64, 128, tileMapTextureSize, tileMapTextureSize)
+
+                        textures.Draw(tileMapTexture, destinationRectangle, sourceRectangle, Color.White)
+
+                End Select
 
             Next
 

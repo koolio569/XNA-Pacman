@@ -136,6 +136,14 @@ Public Class Game1
 
         _player = New CPlayer
 
+        Const FPpauseMenuText As String = "Content/PauseMenuText.txt"
+
+        Const FPpauseMenuStates As String = "Content/PauseMenuStates.txt"
+
+        _currentMenu = New CMenu(LoadListOfString(FPpauseMenuText), LoadListOfInteger(FPpauseMenuStates), GameStateEnum.Paused)
+
+        _currentMenu.LoadTextureInfo("Content/PauseMenuTextureInfo.txt")
+
         _gameState = GameStateEnum.Playing
 
     End Sub
@@ -220,25 +228,33 @@ Public Class Game1
 
     Protected Overrides Sub Draw(ByVal gameTime As GameTime)
 
-        GraphicsDevice.Clear(Color.CornflowerBlue)
+        GraphicsDevice.Clear(Color.Black)
 
         MyBase.Draw(gameTime)
 
         Select Case _gameState
 
-            Case GameStateEnum.MainMenu, GameStateEnum.HighScores, GameStateEnum.Paused
+            Case GameStateEnum.MainMenu, GameStateEnum.HighScores
 
                 _currentMenu.Draw(_spriteBatch)
 
             Case GameStateEnum.Playing
 
-                _player.Draw()
-
                 _currentMap.Draw(_spriteBatch)
+
+                _player.Draw()
 
             Case GameStateEnum.NewGame
 
                 StartNewGame()
+
+            Case GameStateEnum.Paused
+
+                _currentMap.Draw(_spriteBatch)
+
+                _player.Draw()
+
+                _currentMenu.Draw(_spriteBatch)
 
         End Select
 

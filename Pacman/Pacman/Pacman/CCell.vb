@@ -8,7 +8,7 @@
 
     Private _visited As Boolean
 
-    Private _item As String
+    Private _item As Integer
 
     Sub New(ByVal newPosition As Vector2)
 
@@ -24,7 +24,7 @@
 
         _visited = False
 
-        _item = ""
+        _item = -1
 
     End Sub
 
@@ -58,7 +58,7 @@
 
     End Function
 
-    Function GetItem() As String
+    Function GetItem() As Integer
 
         Return _item
 
@@ -80,7 +80,7 @@
 
     End Sub
 
-    Sub SetItem(ByVal newItem As String)
+    Sub SetItem(ByVal newItem As Integer)
 
         _item = newItem
 
