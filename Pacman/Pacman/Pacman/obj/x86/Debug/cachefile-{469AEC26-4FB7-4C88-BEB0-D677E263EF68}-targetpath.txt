@@ -1,0 +1,13 @@
+Content\font.xnb
+Content\HighScore.png
+Content\HighscoreMenuStates.txt
+Content\HighscoreMenuText.txt
+Content\HighScoreMenuTextureInfo.txt
+Content\MainMenuStates.txt
+Content\MainMenuText.txt
+Content\MainMenuTextureInfo.txt
+Content\pacman.png
+Content\Pause.png
+Content\PauseMenuStates.txt
+Content\PauseMenuText.txt
+Content\PauseMenuTextureInfo.txt
