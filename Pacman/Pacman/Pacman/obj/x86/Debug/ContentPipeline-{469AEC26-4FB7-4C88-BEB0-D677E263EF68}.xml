@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\jcamp\Desktop\Pacman\Pacman\Pacman\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2018-04-26T21:41:42+01:00</Time>
+      <Output>F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2018-05-12T08:29:24+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -17,10 +17,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\jcamp\Desktop\Pacman\Pacman\PacmanContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\jcamp\Desktop\Pacman\Pacman\Pacman\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\jcamp\Desktop\Pacman\Pacman\Pacman\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\jcamp\Desktop\Pacman\Pacman\Pacman\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>F:\XNA-Pacman\Pacman\Pacman\PacmanContent\</RootDirectory>
+      <LoggerRootDirectory>F:\XNA-Pacman\Pacman\Pacman\Pacman\</LoggerRootDirectory>
+      <IntermediateDirectory>F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

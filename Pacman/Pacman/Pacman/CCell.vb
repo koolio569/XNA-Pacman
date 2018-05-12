@@ -28,9 +28,15 @@
 
     End Sub
 
-    Function GetPosition() As Vector2
+    Function GetPositionX() As Integer
 
-        Return _position
+        Return CInt(_position.X)
+
+    End Function
+
+    Function GetPositionY() As Integer
+
+        Return CInt(_position.Y)
 
     End Function
 
