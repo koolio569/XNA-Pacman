@@ -290,6 +290,12 @@
 
             Game1._gameState = Game1.GameStateEnum.Paused
 
+        ElseIf Game1._kbState.IsKeyDown(Keys.d2) Then
+
+            Game1._gameState = Game1.GameStateEnum.MainMenu
+
+            Game1.LoadMainMenu()
+
         End If
 
     End Sub
@@ -344,6 +350,22 @@
             Next
 
         Next
+
+        Dim scoreText As String = "Score: " + CStr(Game1._player.GetScore)
+
+        Dim livesText As String = "Lives: " + CStr(Game1._player.GetLives)
+
+        Dim textHeight As Integer = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferHeight * 0.5) - CInt(Game1._font.MeasureString("I").Y)
+
+        Dim textWidth As Integer = 0
+
+        textWidth = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth * 0.8) - CInt(Game1._font.MeasureString(scoreText).X / 2)
+
+        textures.DrawString(Game1._font, scoreText, New Vector2(textWidth, textHeight), Color.Yellow)
+
+        textWidth = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth * 0.8) - CInt(Game1._font.MeasureString(livesText).X / 2)
+
+        textures.DrawString(Game1._font, livesText, New Vector2(textWidth, textHeight + 60), Color.Yellow)
 
         textures.End()
 

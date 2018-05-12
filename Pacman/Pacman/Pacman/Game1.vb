@@ -120,6 +120,42 @@ Public Class Game1
 
     End Function
 
+    Public Shared Sub LoadMainMenu()
+
+        Const FPmainMenuText As String = "Content/MainMenuText.txt"
+
+        Const FPmainMenuStates As String = "Content/MainMenuStates.txt"
+
+        _currentMenu = New CMenu(LoadListOfString(FPmainMenuText), LoadListOfInteger(FPmainMenuStates), GameStateEnum.MainMenu)
+
+        _currentMenu.LoadTextureInfo("Content/MainMenuTextureInfo.txt")
+
+    End Sub
+
+    Public Shared Sub LoadPauseMenu()
+
+        Const FPpauseMenuText As String = "Content/PauseMenuText.txt"
+
+        Const FPpauseMenuStates As String = "Content/PauseMenuStates.txt"
+
+        _currentMenu = New CMenu(LoadListOfString(FPpauseMenuText), LoadListOfInteger(FPpauseMenuStates), GameStateEnum.Paused)
+
+        _currentMenu.LoadTextureInfo("Content/PauseMenuTextureInfo.txt")
+
+    End Sub
+
+    Public Shared Sub LoadHighScoreMenu()
+
+        Const FPhighScoreMenuText As String = "Content/HighScoreMenuText.txt"
+
+        Const FPhighScoreMenuStates As String = "Content/HighScoreMenuStates.txt"
+
+        _currentMenu = New CMenu(LoadListOfString(FPhighScoreMenuText), LoadListOfInteger(FPhighScoreMenuStates), GameStateEnum.HighScores)
+
+        _currentMenu.LoadTextureInfo("Content/HighScoreMenuTextureInfo.txt")
+
+    End Sub
+
     Protected Overrides Sub LoadContent()
 
         _spriteBatch = New SpriteBatch(GraphicsDevice)
@@ -136,13 +172,7 @@ Public Class Game1
 
         _player = New CPlayer
 
-        Const FPpauseMenuText As String = "Content/PauseMenuText.txt"
-
-        Const FPpauseMenuStates As String = "Content/PauseMenuStates.txt"
-
-        _currentMenu = New CMenu(LoadListOfString(FPpauseMenuText), LoadListOfInteger(FPpauseMenuStates), GameStateEnum.Paused)
-
-        _currentMenu.LoadTextureInfo("Content/PauseMenuTextureInfo.txt")
+        LoadPauseMenu()
 
         _gameState = GameStateEnum.Playing
 
@@ -168,13 +198,7 @@ Public Class Game1
 
                 If _currentMenu.GetMenuState <> GameStateEnum.MainMenu Then
 
-                    Const FPmainMenuText As String = "Content/MainMenuText.txt"
-
-                    Const FPmainMenuStates As String = "Content/MainMenuStates.txt"
-
-                    _currentMenu = New CMenu(LoadListOfString(FPmainMenuText), LoadListOfInteger(FPmainMenuStates), GameStateEnum.MainMenu)
-
-                    _currentMenu.LoadTextureInfo("Content/MainMenuTextureInfo.txt")
+                    LoadMainMenu()
 
                 End If
 
@@ -190,13 +214,7 @@ Public Class Game1
 
                 If _currentMenu.GetMenuState <> GameStateEnum.HighScores Then
 
-                    Const FPhighScoreMenuText As String = "Content/HighScoreMenuText.txt"
-
-                    Const FPhighScoreMenuStates As String = "Content/HighScoreMenuStates.txt"
-
-                    _currentMenu = New CMenu(LoadListOfString(FPhighScoreMenuText), LoadListOfInteger(FPhighScoreMenuStates), GameStateEnum.HighScores)
-
-                    _currentMenu.LoadTextureInfo("Content/HighScoreMenuTextureInfo.txt")
+                    LoadHighScoreMenu()
 
                 End If
 
@@ -206,13 +224,7 @@ Public Class Game1
 
                 If _currentMenu.GetMenuState <> GameStateEnum.Paused Then
 
-                    Const FPpauseMenuText As String = "Content/PauseMenuText.txt"
-
-                    Const FPpauseMenuStates As String = "Content/PauseMenuStates.txt"
-
-                    _currentMenu = New CMenu(LoadListOfString(FPpauseMenuText), LoadListOfInteger(FPpauseMenuStates), GameStateEnum.Paused)
-
-                    _currentMenu.LoadTextureInfo("Content/PauseMenuTextureInfo.txt")
+                    LoadPauseMenu()
 
                 End If
 
