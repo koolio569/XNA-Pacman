@@ -288,15 +288,23 @@
 
         If Game1._kbState.IsKeyDown(Keys.D1) Then
 
+        ElseIf Game1._oldKbState.IsKeyDown(Keys.D1) Then
+
             Game1._gameState = Game1.GameStateEnum.Paused
 
-        ElseIf Game1._kbState.IsKeyDown(Keys.d2) Then
+        End If
+
+        If Game1._kbState.IsKeyDown(Keys.D2) Then
+
+        ElseIf Game1._oldKbState.IsKeyDown(Keys.D2) Then
 
             Game1._gameState = Game1.GameStateEnum.MainMenu
 
             Game1.LoadMainMenu()
 
         End If
+
+        Game1._oldKbState = Game1._kbState
 
     End Sub
 

@@ -12,6 +12,8 @@ Public Class Game1
 
     Public Shared _kbState As KeyboardState
 
+    Public Shared _oldKbState As KeyboardState
+
     Public Shared _font As SpriteFont
 
     Public Shared _currentMenu As CMenu
