@@ -130,9 +130,11 @@ Public Class Game1
 
         Const FPmainMenuStates As String = "Content/MainMenuStates.txt"
 
-        _currentMenu = New CMenu(LoadListOfString(FPmainMenuText), LoadListOfInteger(FPmainMenuStates), GameStateEnum.MainMenu)
+        Const FPMainMenuTextureInfo As String = "Content/MainMenuTextureInfo.txt"
 
-        _currentMenu.LoadTextureInfo("Content/MainMenuTextureInfo.txt")
+        Const gameState As Integer = GameStateEnum.MainMenu
+
+        Game1.LoadNewMenu(FPmainMenuText, FPmainMenuStates, FPMainMenuTextureInfo, gameState)
 
     End Sub
 
@@ -142,9 +144,11 @@ Public Class Game1
 
         Const FPpauseMenuStates As String = "Content/PauseMenuStates.txt"
 
-        _currentMenu = New CMenu(LoadListOfString(FPpauseMenuText), LoadListOfInteger(FPpauseMenuStates), GameStateEnum.Paused)
+        Const FPPauseMenuTextureInfo As String = "Content/PauseMenuTextureInfo.txt"
 
-        _currentMenu.LoadTextureInfo("Content/PauseMenuTextureInfo.txt")
+        Const gameState = GameStateEnum.Paused
+
+        Game1.LoadNewMenu(FPpauseMenuText, FPpauseMenuStates, FPPauseMenuTextureInfo, gameState)
 
     End Sub
 
@@ -154,9 +158,19 @@ Public Class Game1
 
         Const FPhighScoreMenuStates As String = "Content/HighScoreMenuStates.txt"
 
-        _currentMenu = New CMenu(LoadListOfString(FPhighScoreMenuText), LoadListOfInteger(FPhighScoreMenuStates), GameStateEnum.HighScores)
+        Const FPhighScoreMenuTextureInfo As String = "Content/HighScoreMenuTextureInfo.txt"
 
-        _currentMenu.LoadTextureInfo("Content/HighScoreMenuTextureInfo.txt")
+        Const gameState As Integer = GameStateEnum.HighScores
+
+        Game1.LoadNewMenu(FPhighScoreMenuText, FPhighScoreMenuStates, FPhighScoreMenuTextureInfo, gameState)
+
+    End Sub
+
+    Public Shared Sub LoadNewMenu(ByRef textLocation As String, ByRef stateLocation As String, ByRef textureInfo As String, ByVal gameState As Integer)
+
+        _currentMenu = New CMenu(LoadListOfString(textLocation), LoadListOfInteger(stateLocation), gameState)
+
+        _currentMenu.LoadTextureInfo(textureInfo)
 
     End Sub
 

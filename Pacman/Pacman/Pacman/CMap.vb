@@ -46,6 +46,8 @@
 
     Private Sub GenerateMaze()
 
+        Const numberOfMegaCoins As Integer = 10
+
         _stackOfCells = New Stack(Of CCell)
 
         For y = 0 To CByte(_numberOfRows - 1)
@@ -76,7 +78,7 @@
 
         Dim randX, randY As Integer
 
-        For i = 0 To 3
+        For i = 1 To numberOfMegaCoins
 
             Do
 
