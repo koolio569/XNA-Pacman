@@ -88,7 +88,6 @@ F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Microsoft.Xna.Framework.Game.xm
 F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
 F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
 F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
-F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.vbprojResolveAssemblyReference.cache
 F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.vbproj.CoreCompileInputs.cache
 F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.vbproj.CopyComplete
@@ -99,3 +98,4 @@ F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\MapTextureInfo.txt
 F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\MapTiles.png
 F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\PacmanTexture.png
 F:\XNA-Pacman\Pacman\Pacman\Pacman\bin\x86\Debug\Content\pacmanTextureInfo.txt
+F:\XNA-Pacman\Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.vbprojAssemblyReference.cache

@@ -44,12 +44,6 @@
 
             If Not gameState = -1 Then
 
-                If gameState = 1 And Game1._gameState = 5 Then
-
-                    Dim l As Integer = 0
-
-                End If
-
                 Game1._gameState = gameState
 
             End If

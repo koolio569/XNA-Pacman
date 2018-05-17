@@ -10,6 +10,8 @@
 
     Private _textureInfo As CTextureInfo
 
+    Private _animationOpen As Boolean
+
     Sub New()
 
         _score = 0
@@ -21,6 +23,8 @@
         _drawPosition = New Vector2(0, 0)
 
         _textureInfo = New CTextureInfo(Game1.LoadTextureInfo("Content/pacmanTextureInfo.txt"))
+
+        _animationOpen = False
 
     End Sub
 

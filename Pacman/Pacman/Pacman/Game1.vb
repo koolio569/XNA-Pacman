@@ -120,6 +120,8 @@ Public Class Game1
 
         End While
 
+        textureFile.Close()
+
         Return listOfTextureInfo
 
     End Function

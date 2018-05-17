@@ -76,6 +76,8 @@
 
         Next
 
+        _maze(0, 0).SetItem(ItemEnum.megacoin)
+
         Dim randX, randY As Integer
 
         For i = 1 To numberOfMegaCoins
@@ -93,6 +95,8 @@
             _maze(randX, randY).SetItem(ItemEnum.megacoin)
 
         Next
+
+        _maze(0, 0).SetItem(ItemEnum.coin)
 
     End Sub
 
@@ -307,6 +311,8 @@
         End If
 
         Game1._oldKbState = Game1._kbState
+
+        'player picks up item
 
     End Sub
 
