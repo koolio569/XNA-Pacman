@@ -8,6 +8,10 @@
 
     Private _visited As Boolean
 
+    Private _distance As Integer
+
+    Private _previousNodeIdentifier As Integer
+
     Sub New(ByVal newIdentifier As Integer, ByVal newPosition As Vector2, ByVal newListOfNeighbours As List(Of Integer))
 
         _identifier = newIdentifier
@@ -18,9 +22,13 @@
 
         _visited = False
 
+        _distance = -1
+
+        _previousNodeIdentifier = -1
+
     End Sub
 
-    Function Getidentifier() As Integer
+    Function GetIdentifier() As Integer
 
         Return _identifier
 
@@ -41,6 +49,18 @@
     Function GetVisited() As Boolean
 
         Return _visited
+
+    End Function
+
+    Function GetDistance() As Integer
+
+        Return _distance
+
+    End Function
+
+    Function GetPreviousNodeIdentifier() As Integer
+
+        Return _previousNodeIdentifier
 
     End Function
 
@@ -65,6 +85,18 @@
     Sub SetVisited(ByVal newState As Boolean)
 
         _visited = newState
+
+    End Sub
+
+    Sub SetDistance(ByVal newDistance As Integer)
+
+        _distance = newDistance
+
+    End Sub
+
+    Sub SetPreviousNodeIdentifier(ByVal newIdentifier As Integer)
+
+        _previousNodeIdentifier = newIdentifier
 
     End Sub
 

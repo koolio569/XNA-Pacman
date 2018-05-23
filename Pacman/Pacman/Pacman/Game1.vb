@@ -46,11 +46,11 @@ Public Class Game1
 
         Content.RootDirectory = "Content"
 
-        _graphics.PreferredBackBufferWidth = 1920
+        _graphics.PreferredBackBufferWidth = 1280
 
-        _graphics.PreferredBackBufferHeight = 1080
+        _graphics.PreferredBackBufferHeight = 720
 
-        _graphics.IsFullScreen = True
+        '_graphics.IsFullScreen = True
 
         _graphics.ApplyChanges()
 
@@ -188,7 +188,7 @@ Public Class Game1
 
     Private Sub StartNewGame()
 
-        _currentMap = New CMap(16, 16)
+        _currentMap = New CMap(CInt(_graphics.GraphicsDevice.PresentationParameters.BackBufferHeight / 64), CInt(_graphics.GraphicsDevice.PresentationParameters.BackBufferHeight / 64))
 
         _player = New CPlayer
 

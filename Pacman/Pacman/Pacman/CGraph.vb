@@ -8,9 +8,7 @@
 
     Protected _PstackOfNodes As New Stack(Of CNode)
 
-    Protected _PqueueOfNodes As New Queue(Of CNode)
 
-    Protected _Pparents As New List(Of Integer)
 
     Protected _Pfound As Boolean
 
@@ -66,27 +64,25 @@
 
             Case PathType.BreadthFirst
 
-                GetListOfNodes(startPoint).SetVisited(True)
-
-                _PqueueOfNodes.Clear()
-
-                _Pparents.Clear()
+                Dim pParents As New List(Of Integer)
 
                 For i = 0 To _listOfNodes.Count - 1
 
-                    _Pparents(i) = -1
+                    pParents.Add(New Integer)
 
                 Next
 
-                BreathFirstSearch(GetListOfNodes(startPoint))
+                GetListOfNodes(startPoint).SetVisited(True)
+
+                BreathFirstSearch(GetListOfNodes(startPoint), pParents)
 
                 Dim parentPosition As Integer = endPoint
 
                 While parentPosition <> endPoint
 
-                    _Ppath.Add(_listOfNodes(_Pparents(parentPosition)).GetPosition)
+                    _Ppath.Add(_listOfNodes(pParents(parentPosition)).GetPosition)
 
-                    parentPosition = _Pparents(parentPosition)
+                    parentPosition = pParents(parentPosition)
 
                 End While
 
@@ -105,13 +101,13 @@
 
         Dim neighbourNode As CNode = GetNeighbourgh(startPoint)
 
-        If startPoint.Getidentifier = endPoint.Getidentifier Then
+        If startPoint.GetIdentifier = endPoint.GetIdentifier Then
 
             _Pfound = True
 
         End If
 
-        If neighbourNode.Getidentifier = -1 Or _Pfound = True Then
+        If neighbourNode.GetIdentifier = -1 Or _Pfound = True Then
 
             If _Pfound = True Then
 
@@ -127,7 +123,7 @@
 
         Else
 
-            GetListOfNodes(neighbourNode.Getidentifier).SetVisited(True)
+            GetListOfNodes(neighbourNode.GetIdentifier).SetVisited(True)
 
             _PstackOfNodes.Push(startPoint)
 
@@ -137,7 +133,9 @@
 
     End Sub
 
-    Private Sub BreathFirstSearch(ByRef startPoint As CNode)
+    Private Sub BreathFirstSearch(ByRef startPoint As CNode, ByRef pParents As List(Of Integer))
+
+        Dim _PqueueOfNodes As New Queue(Of CNode)
 
         _PqueueOfNodes.Enqueue(startPoint)
 
@@ -155,7 +153,7 @@
 
                     _listOfNodes(currentNode.GetListOfNeighbours(i)).SetVisited(True)
 
-                    _Pparents(i) = currentNode.Getidentifier
+                    pParents(i) = currentNode.GetIdentifier
 
                 End If
 
@@ -164,6 +162,84 @@
         End While
 
     End Sub
+
+    Sub DijsktraSearch(ByRef startPoint As CNode, ByRef endPoint As CNode)
+
+        Dim _PqueueOfNodes As New Queue(Of CNode)
+
+        For i = 0 To _listOfNodes.Count - 1
+
+            _listOfNodes(i).SetDistance(CInt(2 ^ 30))
+
+            _listOfNodes(i).SetPreviousNodeIdentifier(-1)
+
+            _PqueueOfNodes.Enqueue(_listOfNodes(i))
+
+        Next
+
+        Dim currentNode As CNode
+
+        Dim listOfNodes As List(Of CNode) = _listOfNodes
+
+        listOfNodes(startPoint.GetIdentifier).SetDistance(0)
+
+        While _PqueueOfNodes.Count > 0
+
+            _PqueueOfNodes.Clear()
+
+            listOfNodes = listOfNodes.OrderBy(Function(x) x.GetDistance).ToList()
+
+            For i = 0 To listOfNodes.Count - 1
+
+                _PqueueOfNodes.Enqueue(listOfNodes(i))
+
+            Next
+
+            Dim alt As Integer
+
+            currentNode = _PqueueOfNodes.Dequeue
+
+            If currentNode.GetIdentifier = endPoint.GetIdentifier Then
+
+                Dim currentPathNode As CNode = endPoint
+
+                While currentPathNode.GetIdentifier <> -1
+
+                    _Ppath.Add(currentPathNode.GetPosition)
+
+                    currentPathNode = _listOfNodes(currentPathNode.GetPreviousNodeIdentifier)
+
+                End While
+
+                _Ppath.Add(currentPathNode.GetPosition)
+
+            Else
+
+                For i = 0 To currentNode.GetListOfNeighbours.Count - 1
+
+                    alt = currentNode.GetDistance + DistanceBetween(currentNode, listOfNodes(currentNode.GetListOfNeighbours(i)))
+
+                    If alt < listOfNodes(currentNode.GetListOfNeighbours(i)).GetDistance Then
+
+                        listOfNodes(currentNode.GetListOfNeighbours(i)).SetDistance(alt)
+
+                        listOfNodes(currentNode.GetListOfNeighbours(i)).SetPreviousNodeIdentifier(currentNode.GetIdentifier)
+
+                    End If
+
+                Next
+
+            End If
+
+        End While
+
+    End Sub
+
+    Function DistanceBetween(ByVal node1 As CNode, ByVal node2 As CNode) As Integer
+
+        Return CInt(Math.Sqrt((node1.GetPosition.X - node2.GetPosition.X) ^ 2 + (node1.GetPosition.Y - node2.GetPosition.Y) ^ 2))
+
+    End Function
 
     Private Function GetNeighbourgh(ByVal currentNode As CNode) As CNode
 
