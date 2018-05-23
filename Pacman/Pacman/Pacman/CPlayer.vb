@@ -76,19 +76,31 @@
 
         If Game1._kbState.IsKeyDown(Keys.W) Then
 
-            _drawPosition.Y -= 3
+            If Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(0) = False Then
+
+                _drawPosition.Y -= 3
+
+                _position.Y = CInt(_drawPosition.Y) Mod 64
+
+            End If
 
         ElseIf Game1._kbState.IsKeyDown(Keys.A) Then
 
-            _drawPosition.X -= 3
+                _drawPosition.X -= 3
 
-        ElseIf Game1._kbState.IsKeyDown(Keys.S) Then
+            ElseIf Game1._kbState.IsKeyDown(Keys.S) Then
 
-            _drawPosition.Y += 3
+            If Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(2) = False Then
+
+                _drawPosition.Y += 3
+
+                _position.Y = CInt(_drawPosition.Y) Mod 64
+
+            End If
 
         ElseIf Game1._kbState.IsKeyDown(Keys.D) Then
 
-            _drawPosition.X += 3
+                _drawPosition.X += 3
 
         End If
 

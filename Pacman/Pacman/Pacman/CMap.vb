@@ -38,6 +38,18 @@
 
     End Sub
 
+    Function GetMaze() As CCell(,)
+
+        Return _maze
+
+    End Function
+
+    Function GetGraph() As CGraph
+
+        Return _graph
+
+    End Function
+
     Sub LoadTextureInfo(ByVal filePath As String)
 
         _textureInfo = New CTextureInfo(Game1.LoadTextureInfo(filePath))
