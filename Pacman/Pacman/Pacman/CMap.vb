@@ -12,6 +12,10 @@
 
     Private _textureInfo As CTextureInfo
 
+    Private _numberOfAI As Integer
+
+    Private _mapAI As List(Of CAi)
+
     Enum ItemEnum
 
         coin = 10
@@ -35,6 +39,16 @@
         GenerateMaze()
 
         GenerateGraph()
+
+        _mapAI = New List(Of CAi)
+
+        _numberOfAI = 3
+
+        For i = 1 To _numberOfAI
+
+            _mapAI.Add(New CAi(New Vector2(0, 0), CAi.comptence.medium))
+
+        Next
 
     End Sub
 

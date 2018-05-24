@@ -8,8 +8,6 @@
 
     Protected _PstackOfNodes As New Stack(Of CNode)
 
-
-
     Protected _Pfound As Boolean
 
     Public Enum PathType
@@ -90,6 +88,8 @@
 
             Case Else
 
+                DijsktraSearch(_listOfNodes(startPoint), _listOfNodes(endPoint))
+
 
         End Select
 
@@ -163,7 +163,7 @@
 
     End Sub
 
-    Sub DijsktraSearch(ByRef startPoint As CNode, ByRef endPoint As CNode)
+    Private Sub DijsktraSearch(ByRef startPoint As CNode, ByRef endPoint As CNode)
 
         Dim _PqueueOfNodes As New Queue(Of CNode)
 
@@ -207,11 +207,13 @@
 
                     _Ppath.Add(currentPathNode.GetPosition)
 
-                    currentPathNode = _listOfNodes(currentPathNode.GetPreviousNodeIdentifier)
+                    currentPathNode = listOfNodes(currentPathNode.GetPreviousNodeIdentifier)
 
                 End While
 
                 _Ppath.Add(currentPathNode.GetPosition)
+
+                _PqueueOfNodes.Clear()
 
             Else
 
@@ -235,7 +237,7 @@
 
     End Sub
 
-    Function DistanceBetween(ByVal node1 As CNode, ByVal node2 As CNode) As Integer
+    Private Function DistanceBetween(ByVal node1 As CNode, ByVal node2 As CNode) As Integer
 
         Return CInt(Math.Sqrt((node1.GetPosition.X - node2.GetPosition.X) ^ 2 + (node1.GetPosition.Y - node2.GetPosition.Y) ^ 2))
 
