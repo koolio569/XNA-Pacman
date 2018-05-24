@@ -88,6 +88,8 @@
 
     Sub Update()
 
+        Const movementSpeed As Integer = 4
+
 
         Game1._kbState = Keyboard.GetState
 
@@ -148,23 +150,97 @@
         End If
 
         Select Case _orientation
+
             Case oreientation.up
 
                 'load up animation
-                _drawPosition.Y -= 2
+
+                If _drawPosition.Y Mod 64 = 0 Then
+
+                    If Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(0) = True Then
+
+                        _orientation = -1
+
+                    Else
+
+                        _drawPosition.Y -= movementSpeed
+
+                    End If
+
+                Else
+
+                    _drawPosition.Y -= movementSpeed
+
+                End If
+
+                _position.Y = CSng(Math.Floor((_drawPosition.Y / 64)))
 
             Case oreientation.down
 
                 'load down animation
-                _drawPosition.Y += 2
+                If (_drawPosition.Y + 64) Mod 64 = 0 Then
+
+                    If Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(2) = True Then
+
+                        _orientation = -1
+
+                    Else
+
+                        _drawPosition.Y += movementSpeed
+
+                    End If
+
+                Else
+
+                    _drawPosition.Y += movementSpeed
+
+                End If
+
+                _position.Y = CSng(Math.Floor((_drawPosition.Y / 64)))
 
             Case oreientation.right
 
-                _drawPosition.X += 2
+                If (_drawPosition.X + 64) Mod 64 = 0 Then
+
+                    If Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(1) = True Then
+
+                        _orientation = -1
+
+                    Else
+
+                        _drawPosition.X += movementSpeed
+
+                    End If
+
+                Else
+
+                    _drawPosition.X += movementSpeed
+
+                End If
+
+                _position.X = CSng(Math.Floor((_drawPosition.X / 64)))
 
             Case oreientation.left
 
-                _drawPosition.X -= 2
+                If _drawPosition.X Mod 64 = 0 Then
+
+                    If Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(3) = True Then
+
+                        _orientation = -1
+
+                    Else
+
+                        _drawPosition.X -= movementSpeed
+
+                    End If
+
+                Else
+
+                    _drawPosition.X -= movementSpeed
+
+                End If
+
+                _position.X = CSng(Math.Floor((_drawPosition.X / 64)))
 
         End Select
 
@@ -214,7 +290,31 @@
 
         textures.DrawString(Game1._font, livesText, New Vector2(textWidth, textHeight + 240), Color.Yellow)
 
-        livesText = CStr(_position.X)
+        livesText = "North: " & CStr(Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(0))
+
+        textWidth = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth * 0.8) - CInt(Game1._font.MeasureString(livesText).X / 2)
+
+        textures.DrawString(Game1._font, livesText, New Vector2(textWidth, textHeight - 240), Color.Yellow)
+
+        livesText = "South: " & CStr(Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(2))
+
+        textWidth = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth * 0.8) - CInt(Game1._font.MeasureString(livesText).X / 2)
+
+        textures.DrawString(Game1._font, livesText, New Vector2(textWidth, textHeight - 120), Color.Yellow)
+
+        livesText = "East: " & CStr(Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(1))
+
+        textWidth = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth * 0.8) - CInt(Game1._font.MeasureString(livesText).X / 2)
+
+        textures.DrawString(Game1._font, livesText, New Vector2(textWidth, textHeight - 180), Color.Yellow)
+
+        livesText = "West: " & CStr(Game1._currentMap.GetMaze(CInt(_position.X), CInt(_position.Y)).GetWalls(3))
+
+        textWidth = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth * 0.8) - CInt(Game1._font.MeasureString(livesText).X / 2)
+
+        textures.DrawString(Game1._font, livesText, New Vector2(textWidth, textHeight - 60), Color.Yellow)
+
+        livesText = CStr(_position.Y)
 
         textWidth = CInt(Game1._graphics.GraphicsDevice.PresentationParameters.BackBufferWidth * 0.8) - CInt(Game1._font.MeasureString(livesText).X / 2)
 
